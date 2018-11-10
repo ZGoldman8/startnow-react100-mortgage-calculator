@@ -34,13 +34,14 @@ export default class App extends React.Component {
     var numerator = (r * Math.pow((1 + r), n));
     var denominator = Math.pow((1+r), n) - 1;
     var monthly = ((numerator / denominator) * this.state.balance).toFixed(2);
-    this.setState({monthly: "$" + monthly + " is your payment."})
+    this.setState({monthly: "$" + monthly + " is your monthly payment."})
   }
 
   render() {
     return (
-      <div className='container' className="form-horizontal">
-        <h3>Mortgage Calculator</h3>
+    <div>
+      <div className="container bg-secondary rounded p-3 mt-3">
+        <h3 className="text-white">Mortgage Calculator</h3>
         <hr />
         <p />Loan Balance <input name='balance' type='number' onChange={this.balanceChange} value={this.state.balance} />
         <p />Interest Rate % <input name='rate' type='number' step='0.01' onChange={this.rateChange} value={this.state.rate} />
@@ -50,8 +51,9 @@ export default class App extends React.Component {
           <option value='30'>30</option>
         </select>
         <p /><button name='submit' onClick={this.calculate} className="btn btn-primary">Calculate</button><br />
-        <div name='output' className="form-group-lg" id="output">
-          <h4><p className="container">{this.state.monthly}</p></h4>
+      </div>
+	<div name='output' className="form-group-lg mt-3" id="output">
+	  <h4><p className="container bg-success">{this.state.monthly}</p></h4>
         </div>
       </div>
     );
